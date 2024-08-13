@@ -1,4 +1,4 @@
-package items
+package products
 
 import (
 	"github.com/armiariyan/assessment-tsel/internal/pkg/constants"
@@ -6,7 +6,7 @@ import (
 
 // * Requests
 type (
-	GetListItemsRequest struct {
+	GetListProductsRequest struct {
 		constants.PaginationRequest
 		Type string `query:"type" validate:"omitempty"`
 		Name string `query:"name" validate:"omitempty"`

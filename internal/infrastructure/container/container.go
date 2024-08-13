@@ -6,29 +6,30 @@ import (
 
 	"github.com/armiariyan/assessment-tsel/internal/config"
 	"github.com/armiariyan/assessment-tsel/internal/domain/repositories"
-	"github.com/armiariyan/assessment-tsel/internal/infrastructure/mysql"
+	"github.com/armiariyan/assessment-tsel/internal/infrastructure/postgresql"
 	"github.com/armiariyan/assessment-tsel/internal/pkg/log"
-	"github.com/armiariyan/assessment-tsel/internal/usecase/customers"
 	"github.com/armiariyan/assessment-tsel/internal/usecase/healthcheck"
-	"github.com/armiariyan/assessment-tsel/internal/usecase/invoices"
-	"github.com/armiariyan/assessment-tsel/internal/usecase/items"
+	"github.com/armiariyan/assessment-tsel/internal/usecase/products"
+	"gorm.io/gorm"
 
 	"github.com/armiariyan/bepkg/logger"
 )
 
 type Container struct {
 	Config             *config.DefaultConfig
-	DB                 *config.DB
+	PostgresqlDB       *config.PostgresqlDB
+	ProductsDB         *gorm.DB
 	Logger             logger.Logger
 	HealthCheckService healthcheck.Service
-	CustomersService   customers.CustomersService
-	ItemsService       items.ItemsService
-	InvoicesService    invoices.InvoicesService
+	ProductService     products.Service
 }
 
 func (c *Container) Validate() *Container {
 	if c.Config == nil {
 		panic("Config is nil")
+	}
+	if c.ProductsDB == nil {
+		panic("ProductsDB is nil")
 	}
 	if c.Logger == nil {
 		panic("Logger is nil")
@@ -36,14 +37,8 @@ func (c *Container) Validate() *Container {
 	if c.HealthCheckService == nil {
 		panic("HealthCheckService is nil")
 	}
-	if c.CustomersService == nil {
-		panic("CustomersService is nil")
-	}
-	if c.ItemsService == nil {
-		panic("ItemsService is nil")
-	}
-	if c.InvoicesService == nil {
-		panic("InvoicesService is nil")
+	if c.ProductService == nil {
+		panic("ProductService is nil")
 	}
 	return c
 }
@@ -71,44 +66,32 @@ func New() *Container {
 		},
 	}
 
-	dbConf := config.DB{
-		URI:         config.GetString("mysql.uri"),
-		Timeout:     config.GetInt("mysql.timeout"),
-		MaxPoolSize: config.GetInt("mysql.maxPool"),
-		MinPoolSize: config.GetInt("mysql.minPoolSize"),
-		DebugMode:   config.GetBool("debugMode"),
+	psqlConfig := &config.PostgresqlDB{
+		Host:     config.GetString("postgresql.products.host"),
+		User:     config.GetString("postgresql.products.user"),
+		Password: config.GetString("postgresql.products.password"),
+		Name:     config.GetString("postgresql.products.db"),
+		Port:     config.GetInt("postgresql.products.port"),
+		SSLMode:  config.GetString("postgresql.products.ssl"),
+		Schema:   config.GetString("postgresql.products.schema"),
+		Debug:    config.GetBool("postgresql.products.debug"),
 	}
 
 	log.New()
 
-	db := mysql.NewMySQL(dbConf)
+	productsDB := postgresql.NewDB(*psqlConfig)
 
 	// * Repositories
-	customerRepository := repositories.NewCustomersRepository(db)
-	itemsRepository := repositories.NewItemsRepository(db)
-	invoicesRepository := repositories.NewInvoicesRepository(db)
-	invoiceItemsRepository := repositories.NewInvoiceItemsRepository(db)
-	invoiceSummaryRepository := repositories.NewInvoiceSummaryRepository(db)
+	productRepository := repositories.NewProductsRepository(productsDB)
 
 	// * Wrapper
 
 	// * Services
-	healthCheckService := healthcheck.NewService().Validate()
-	customersService := customers.NewService().
-		SetDB(db).
-		SetCustomersRepository(customerRepository).
+	healthCheckService := healthcheck.NewService().
 		Validate()
-	itemsService := items.NewService().
-		SetDB(db).
-		SetItemsRepository(itemsRepository).
-		Validate()
-	invoicesService := invoices.NewService().
-		SetDB(db).
-		SetCustomersRepository(customerRepository).
-		SetInvoicesRepository(invoicesRepository).
-		SetItemsRepository(itemsRepository).
-		SetInvoiceItemsRepository(invoiceItemsRepository).
-		SetInvoiceSummaryRepository(invoiceSummaryRepository).
+
+	productService := products.NewService().
+		SetProductsRepository(productRepository).
 		Validate()
 
 	// * Brokers
@@ -118,10 +101,10 @@ func New() *Container {
 	container := &Container{
 		Config:             defConfig,
 		Logger:             defLogger,
+		PostgresqlDB:       psqlConfig,
+		ProductsDB:         productsDB,
 		HealthCheckService: healthCheckService,
-		CustomersService:   customersService,
-		ItemsService:       itemsService,
-		InvoicesService:    invoicesService,
+		ProductService:     productService,
 	}
 	container.Validate()
 	return container

@@ -12,8 +12,11 @@ require (
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/spf13/cast v1.3.1
 	github.com/spf13/viper v1.7.1
-	golang.org/x/net v0.10.0
-	golang.org/x/sync v0.0.0-20201207232520-09787c993a3a
+	golang.org/x/net v0.21.0
+	golang.org/x/sync v0.1.0
+	gorm.io/datatypes v1.2.1
+	gorm.io/driver/postgres v1.5.0
+	gorm.io/gorm v1.25.11
 )
 
 require (
@@ -26,7 +29,7 @@ require (
 	github.com/go-playground/locales v0.13.0 // indirect
 	github.com/go-playground/universal-translator v0.17.0 // indirect
 	github.com/go-playground/validator/v10 v10.5.0
-	github.com/go-sql-driver/mysql v1.7.0 // indirect
+	github.com/go-sql-driver/mysql v1.8.1 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/snappy v0.0.3 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
@@ -66,7 +69,7 @@ require (
 	go.uber.org/multierr v1.5.0 // indirect
 	go.uber.org/zap v1.16.0 // indirect
 	golang.org/x/lint v0.0.0-20210508222113-6edffad5e616 // indirect
-	golang.org/x/sys v0.15.0 // indirect
+	golang.org/x/sys v0.19.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	golang.org/x/time v0.1.0 // indirect
 	gopkg.in/ini.v1 v1.51.0 // indirect
@@ -75,15 +78,19 @@ require (
 )
 
 require (
+	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
 	github.com/hashicorp/go-uuid v1.0.2 // indirect
-	github.com/jmoiron/sqlx v1.2.1-0.20200324155115-ee514944af4b // indirect
-	github.com/kr/pretty v0.3.0 // indirect
-	github.com/lib/pq v1.10.2 // indirect
-	github.com/mattn/go-sqlite3 v1.14.15 // indirect
+	github.com/jackc/pgpassfile v1.0.0 // indirect
+	github.com/jackc/pgservicefile v0.0.0-20231201235250-de7065d80cb9 // indirect
+	github.com/jackc/pgx/v5 v5.5.5 // indirect
+	github.com/jackc/puddle/v2 v2.2.1 // indirect
+	github.com/jinzhu/inflection v1.0.0 // indirect
+	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/sony/gobreaker v0.5.0 // indirect
 	go.uber.org/atomic v1.10.0 // indirect
-	golang.org/x/crypto v0.17.0 // indirect
+	golang.org/x/crypto v0.22.0 // indirect
 	golang.org/x/mod v0.11.0 // indirect
+	gorm.io/driver/mysql v1.5.6 // indirect
 	moul.io/http2curl/v2 v2.3.0 // indirect
 )

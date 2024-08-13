@@ -13,23 +13,11 @@ func SetupRouter(e *echo.Echo, cnt *container.Container) {
 
 	v1 := e.Group("/v1")
 	{
-		customers := v1.Group("/customers")
+
+		products := v1.Group("/products")
 		{
-			customers.GET("", h.customersHandler.GetListCustomers)
+			products.GET("", h.productsHandler.GetListProducts)
 		}
 
-		items := v1.Group("/items")
-		{
-			items.GET("", h.itemsHandler.GetListItems)
-		}
-
-		invoices := v1.Group("/invoices")
-		{
-			invoices.GET("", h.invoicesHandler.GetListInvoices)
-			invoices.GET("/:invoiceID", h.invoicesHandler.GetDetailInvoice)
-			invoices.POST("", h.invoicesHandler.CreateInvoice)
-			invoices.PATCH("", h.invoicesHandler.EditInvoice)
-			invoices.DELETE("/:invoiceID", h.invoicesHandler.DeleteDetailInvoice)
-		}
 	}
 }
