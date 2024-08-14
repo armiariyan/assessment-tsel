@@ -1,14 +1,11 @@
 package utils
 
 import (
-	"context"
 	"fmt"
-	"regexp"
 
 	"github.com/armiariyan/assessment-tsel/internal/pkg/log"
 
 	"github.com/go-playground/validator/v10"
-	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
 )
 
@@ -82,23 +79,4 @@ func castedValidate(valErr validator.ValidationErrors) (err error) {
 		}
 	}
 	return
-}
-
-func ValidateUUID(ctx context.Context, u string) (err error) {
-	_, err = uuid.Parse(u)
-	if err != nil {
-		log.Error(ctx, "failed to parse uuid", err)
-		err = fmt.Errorf("invalid uuid")
-		return
-	}
-	return
-}
-
-func ValidatePhoneNumberStartWith62(phoneNumber string) bool {
-	matched, _ := regexp.MatchString(`^62\d+`, phoneNumber)
-	return matched
-}
-
-func ValidatePasswordsEquals(password, confirmPassword string) bool {
-	return password != confirmPassword
 }

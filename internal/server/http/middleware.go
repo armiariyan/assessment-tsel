@@ -9,7 +9,6 @@ import (
 	"github.com/armiariyan/assessment-tsel/internal/pkg/constants"
 	"github.com/armiariyan/assessment-tsel/internal/pkg/log"
 
-	"github.com/armiariyan/bepkg/response"
 	"github.com/armiariyan/bepkg/utils"
 	"github.com/armiariyan/logger"
 	"github.com/go-playground/validator/v10"
@@ -116,16 +115,15 @@ func errorHandler(err error, c echo.Context) {
 	c.Set("error-handled", true)
 
 	resp := constants.DefaultResponse{
-		Status:  response.GeneralError,
+		Status:  constants.STATUS_GENERAL_ERROR,
 		Message: err.Error(),
 		Data:    struct{}{},
-		Errors:  make([]string, 0),
 	}
 
 	if c.Get("invalid-format") != nil || strings.Contains(err.Error(), "Error:Field validation for") {
 		resp.Status = constants.STATUS_BAD_REQUEST
 		resp.Message = constants.MESSAGE_BAD_REQUEST
-		resp.Errors = append(resp.Errors, strings.Split(err.Error(), "\n")...)
+		resp.Data = err.Error()
 	}
 	if !isLoggingSkip(c) {
 		request := c.Request()

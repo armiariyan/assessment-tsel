@@ -17,7 +17,7 @@ func (s *service) Validate() Service {
 
 func (s *service) HealthCheck(ctx context.Context) (res HealthCheckResponse, err error) {
 	res = HealthCheckResponse{
-		Message:    "Invoice System - Server up and running",
+		Message:    "Assessment Tsel - Server up and running",
 		ServerTime: time.Now().Format(time.RFC1123),
 		Version:    "v1.0.0",
 	}
