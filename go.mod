@@ -3,7 +3,6 @@ module github.com/armiariyan/assessment-tsel
 go 1.20
 
 require (
-	github.com/DATA-DOG/go-sqlmock v1.5.2
 	github.com/armiariyan/bepkg v0.0.0-20240323203849-815fa0465e14
 	github.com/armiariyan/logger v0.0.0-20240323203553-b2b1b741bcf8
 	github.com/labstack/echo/v4 v4.5.0
