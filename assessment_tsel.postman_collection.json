@@ -1,0 +1,825 @@
+{
+	"info": {
+		"_postman_id": "57ce14e0-6593-443a-b2db-38550ff54a9f",
+		"name": "Tsel Products",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26445251"
+	},
+	"item": [
+		{
+			"name": "Healthcheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9999",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 2,\n    \"name\": \"UPDATE Kaos slimitfit wanita\",\n    \"description\": \"Kaos slimfit wanita\",\n    \"price\": 100000,\n    \"stock\": 150,\n    \"rating\": 4,\n    \"variety\": {\n        \"sizes\": [\n            \"S\",\n            \"M\",\n            \"L\",\n            \"XL\"\n        ],\n        \"colors\": [\n            \"black\",\n            \"white\"\n        ]\n    },\n    \"createdAt\": \"2024-08-14T10:48:49.945826Z\",\n    \"updatedAt\": \"2024-08-14T10:48:49.945826Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/v1/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[SUCCESS] Update Product",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 2,\n    \"name\": \"UPDATE Kaos slimitfit wanita\",\n    \"description\": \"Kaos slimfit wanita\",\n    \"price\": 100000,\n    \"stock\": 150,\n    \"rating\": 4,\n    \"variety\": {\n        \"sizes\": [\n            \"S\",\n            \"M\",\n            \"L\",\n            \"XL\"\n        ],\n        \"colors\": [\n            \"black\",\n            \"white\"\n        ]\n    },\n    \"createdAt\": \"2024-08-14T10:48:49.945826Z\",\n    \"updatedAt\": \"2024-08-14T10:48:49.945826Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9999/v1/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"v1",
+								"products"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Aug 2024 15:46:54 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "329"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"200\",\n    \"message\": \"success update data\",\n    \"data\": {\n        \"id\": 2,\n        \"name\": \"UPDATE Kaos slimitfit wanita\",\n        \"description\": \"Kaos slimfit wanita\",\n        \"price\": 100000,\n        \"stock\": 150,\n        \"rating\": 4.5,\n        \"variety\": {\n            \"sizes\": [\n                \"S\",\n                \"M\",\n                \"L\",\n                \"XL\"\n            ],\n            \"colors\": [\n                \"black\",\n                \"white\"\n            ]\n        },\n        \"createdAt\": \"2024-08-14T10:48:49.945826Z\",\n        \"updatedAt\": \"2024-08-14T22:46:54.426361Z\"\n    }\n}"
+				},
+				{
+					"name": "[FAILED] Data Product Not Found",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 103912,\n    \"name\": \"UPDATE Kaos slimitfit wanita\",\n    \"description\": \"Kaos slimfit wanita\",\n    \"price\": 100000,\n    \"stock\": 150,\n    \"rating\": 4,\n    \"variety\": {\n        \"sizes\": [\n            \"S\",\n            \"M\",\n            \"L\",\n            \"XL\"\n        ],\n        \"colors\": [\n            \"black\",\n            \"white\"\n        ]\n    },\n    \"createdAt\": \"2024-08-14T10:48:49.945826Z\",\n    \"updatedAt\": \"2024-08-14T10:48:49.945826Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9999/v1/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"v1",
+								"products"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Aug 2024 15:47:56 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "62"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"404\",\n    \"message\": \"data product not found\",\n    \"data\": {}\n}"
+				},
+				{
+					"name": "[FAILED] Invalid Request Format",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 0,\n    \"name\": \"UPDATE Kaos slimitfit wanita\",\n    \"description\": \"Kaos slimfit wanita\",\n    \"price\": 100000,\n    \"stock\": 150,\n    \"rating\": 4,\n    \"variety\": {\n        \"sizes\": [\n            \"S\",\n            \"M\",\n            \"L\",\n            \"XL\"\n        ],\n        \"colors\": [\n            \"black\",\n            \"white\"\n        ]\n    },\n    \"createdAt\": \"2024-08-14T10:48:49.945826Z\",\n    \"updatedAt\": \"2024-08-14T10:48:49.945826Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9999/v1/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"v1",
+								"products"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Aug 2024 15:48:18 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "76"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"400\",\n    \"message\": \"invalid request format\",\n    \"data\": \"ID is required\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Sarung\",\n    \"description\": \"Sarung untuk mandi pagi deskripsi\",\n    \"price\": 99009,\n    \"variety\": {\n        \"colors\": [\"red\", \"blue\", \"green\"],\n        \"sizes\": [\"S\", \"M\", \"L\", \"XL\"]\n    },\n    \"stock\": 150\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/v1/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[SUCCESS] Create Product",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Sarung\",\n    \"description\": \"Sarung untuk mandi pagi deskripsi\",\n    \"price\": 99009,\n    \"variety\": {\n        \"colors\": [\"red\", \"blue\", \"green\"],\n        \"sizes\": [\"S\", \"M\", \"L\", \"XL\"]\n    },\n    \"stock\": 150\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9999/v1/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"v1",
+								"products"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Aug 2024 15:30:55 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "49"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"200\",\n    \"message\": \"success\",\n    \"data\": null\n}"
+				},
+				{
+					"name": "[FAILED] Invalid Request Format",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"\",\n    \"description\": \"Sarung untuk mandi pagi deskripsi\",\n    \"price\": 99009,\n    \"variety\": {\n        \"colors\": [\"red\", \"blue\", \"green\"],\n        \"sizes\": [\"S\", \"M\", \"L\", \"XL\"]\n    },\n    \"stock\": 150\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9999/v1/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"v1",
+								"products"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Aug 2024 15:31:21 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "78"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"400\",\n    \"message\": \"invalid request format\",\n    \"data\": \"Name is required\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Product by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9999/v1/products/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"v1",
+						"products",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[SUCCESS] Get Product by ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9999/v1/products/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"v1",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Aug 2024 15:32:57 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "307"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"200\",\n    \"message\": \"success\",\n    \"data\": {\n        \"id\": 2,\n        \"name\": \"Kaos Polos Wanita\",\n        \"description\": \"Kaos slimfit wanita\",\n        \"price\": 100000,\n        \"stock\": 150,\n        \"rating\": null,\n        \"variety\": {\n            \"sizes\": [\n                \"S\",\n                \"M\",\n                \"L\",\n                \"XL\"\n            ],\n            \"colors\": [\n                \"black\",\n                \"white\"\n            ]\n        },\n        \"createdAt\": \"2024-08-14T10:48:49.945826Z\",\n        \"updatedAt\": \"2024-08-14T10:48:49.945826Z\"\n    }\n}"
+				},
+				{
+					"name": "[FAILED] Invalid ID Format",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9999/v1/products/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"v1",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "asdasd"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Aug 2024 15:35:25 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "72"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"400\",\n    \"message\": \"invalid request format\",\n    \"data\": \"invalid id\"\n}"
+				},
+				{
+					"name": "[FAILED] Product Not Found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9999/v1/products/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"v1",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Aug 2024 15:45:37 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "62"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"404\",\n    \"message\": \"data product not found\",\n    \"data\": {}\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Product by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9999/v1/products/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"v1",
+						"products",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[FAILED] Invalid ID",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9999/v1/products/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"v1",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Aug 2024 15:49:18 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "72"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"400\",\n    \"message\": \"invalid request format\",\n    \"data\": \"invalid id\"\n}"
+				},
+				{
+					"name": "[FAILED] Data Product Not Found",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9999/v1/products/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"v1",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Aug 2024 15:52:04 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "62"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"404\",\n    \"message\": \"data product not found\",\n    \"data\": {}\n}"
+				},
+				{
+					"name": "[SUCCESS] Delete Product by ID",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9999/v1/products/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"v1",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Aug 2024 15:52:38 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "61"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"200\",\n    \"message\": \"success delete data\",\n    \"data\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9999/v1/products?page=1&limit=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"v1",
+						"products"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[SUCCESS] Get All Products",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9999/v1/products?page=1&limit=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"v1",
+								"products"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Aug 2024 15:31:47 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1780"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"200\",\n    \"message\": \"success\",\n    \"data\": {\n        \"results\": [\n            {\n                \"id\": 2,\n                \"name\": \"Kaos Polos Wanita\",\n                \"description\": \"Kaos slimfit wanita\",\n                \"price\": 100000,\n                \"stock\": 150,\n                \"rating\": null,\n                \"variety\": {\n                    \"sizes\": [\n                        \"S\",\n                        \"M\",\n                        \"L\",\n                        \"XL\"\n                    ],\n                    \"colors\": [\n                        \"black\",\n                        \"white\"\n                    ]\n                },\n                \"createdAt\": \"2024-08-14T10:48:49.945826Z\",\n                \"updatedAt\": \"2024-08-14T10:48:49.945826Z\"\n            },\n            {\n                \"id\": 3,\n                \"name\": \"Updated Jaket Denim\",\n                \"description\": \"Jaket denim updated nih\",\n                \"price\": 125000,\n                \"stock\": 150,\n                \"rating\": 4.5,\n                \"variety\": {\n                    \"sizes\": [\n                        \"S\",\n                        \"M\",\n                        \"L\",\n                        \"XL\"\n                    ],\n                    \"colors\": [\n                        \"red\",\n                        \"blue\",\n                        \"green\"\n                    ]\n                },\n                \"createdAt\": \"2024-08-14T11:20:01.624094Z\",\n                \"updatedAt\": \"2024-08-14T11:29:06.354793Z\"\n            },\n            {\n                \"id\": 1,\n                \"name\": \"Kaos Polos Pria\",\n                \"description\": \"Kaos polos pria cuttingan oversize\",\n                \"price\": 125000,\n                \"stock\": 150,\n                \"rating\": 3.9,\n                \"variety\": {\n                    \"sizes\": [\n                        \"S\",\n                        \"M\",\n                        \"L\",\n                        \"XXL\"\n                    ],\n                    \"colors\": [\n                        \"red\",\n                        \"blue\",\n                        \"green\"\n                    ]\n                },\n                \"createdAt\": \"2024-08-14T10:29:14.856867Z\",\n                \"updatedAt\": \"2024-08-14T22:12:45.023702Z\"\n            },\n            {\n                \"id\": 4,\n                \"name\": \"Sarung jamur\",\n                \"description\": \"Sarung jamur deskripsi\",\n                \"price\": 99009,\n                \"stock\": 150,\n                \"rating\": null,\n                \"variety\": {\n                    \"sizes\": [\n                        \"S\",\n                        \"M\",\n                        \"L\",\n                        \"XL\"\n                    ],\n                    \"colors\": [\n                        \"red\",\n                        \"blue\",\n                        \"green\"\n                    ]\n                },\n                \"createdAt\": \"2024-08-14T22:25:56.743047Z\",\n                \"updatedAt\": \"2024-08-14T22:25:56.743047Z\"\n            },\n            {\n                \"id\": 5,\n                \"name\": \"Test kurang kurang\",\n                \"description\": \"Sarung jamur deskripsi\",\n                \"price\": 99009,\n                \"stock\": 150,\n                \"rating\": 4.4,\n                \"variety\": {\n                    \"sizes\": [\n                        \"S\",\n                        \"M\",\n                        \"L\",\n                        \"XL\"\n                    ],\n                    \"colors\": [\n                        \"red\",\n                        \"blue\",\n                        \"green\"\n                    ]\n                },\n                \"createdAt\": \"2024-08-14T22:28:01.449332Z\",\n                \"updatedAt\": \"2024-08-14T22:29:06.21072Z\"\n            },\n            {\n                \"id\": 6,\n                \"name\": \"Sarung\",\n                \"description\": \"Sarung untuk mandi pagi deskripsi\",\n                \"price\": 99009,\n                \"stock\": 150,\n                \"rating\": null,\n                \"variety\": {\n                    \"sizes\": [\n                        \"S\",\n                        \"M\",\n                        \"L\",\n                        \"XL\"\n                    ],\n                    \"colors\": [\n                        \"red\",\n                        \"blue\",\n                        \"green\"\n                    ]\n                },\n                \"createdAt\": \"2024-08-14T22:30:55.358444Z\",\n                \"updatedAt\": \"2024-08-14T22:30:55.358444Z\"\n            }\n        ],\n        \"pagination\": {\n            \"page\": 1,\n            \"totalPages\": 1,\n            \"totalItems\": 6,\n            \"limit\": 10,\n            \"hasNext\": false,\n            \"hasPrevious\": false\n        }\n    }\n}"
+				},
+				{
+					"name": "[FAILED] Invalid Request Format",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9999/v1/products?page=&limit=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9999",
+							"path": [
+								"v1",
+								"products"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 14 Aug 2024 15:32:39 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "100"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"400\",\n    \"message\": \"invalid request format\",\n    \"data\": \"Page is not greater than or equal to 1\"\n}"
+				}
+			]
+		}
+	]
+}
