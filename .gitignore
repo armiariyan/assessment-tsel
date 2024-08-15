@@ -15,4 +15,3 @@ k8s
 bin
 
 .gitlab-ci.yml
-Dockerfile
