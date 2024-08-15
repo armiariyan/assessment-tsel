@@ -1,8 +1,8 @@
 # Assessment Tsel
 
 ## Personal Notes
-- Untuk kemudahan pengetesan oleh user, saya menggunakan free `PostgreSQL` database via [Railway](__https://railway.app/__), jadi user tidak perlu install database dan bisa langsung hit endpoint
-- Jika anda menginginkan menggunakan database local anda sendiri, pastikan anda sudah menginstall postgreSQL pada komputer anda, lalu silahkan menjalankan DDL di bagian paling bawah readme ini untuk membuat table dan beberapa data contoh
+- For ease of testing by users, I’m using a trial `PostgreSQL` database via [Railway](__https://railway.app/__), so users don’t need to install a database and can directly hit the endpoints.
+- If you prefer to use your own local database, make sure you have PostgreSQL installed on your computer, then run the `DDL` at the bottom of this `README` to create the tables and some sample data.
 
 ### How to run this project?
 
@@ -38,8 +38,15 @@ cd assessment-tsel
 - Run `go run main.go`.
 - Access API using `http://localhost:9999`
 
-### Postman Collection
-I'm attached my these APIs collection inside this folder, please check it out the file named `assessment_tsel.postman_collection`
+### API documentation of this project
+
+#### Online docs
+<a href="https://documenter.getpostman.com/view/26445251/2sA3s6GViK" target="_blank">
+    <img alt="View API Doc Button" src="https://github.com/amitshekhariitbhu/go-backend-clean-architecture/blob/main/assets/button-view-api-docs.png?raw=true" width="200" height="60"/>
+</a>
+
+#### Offline docs
+If you prefer direct import to postman, I'm attached my these APIs collection inside this folder, please check it out the file named `assessment_tsel.postman_collection`
 
 ### How to run the test?
 
@@ -60,9 +67,9 @@ make mocks
 Whenever you make changes in the interface repository, you need to run the corresponding command to regenerate the mock code for testing.
 
 ### Diagram Data Language (DDL) for Local Database
-Sekali lagi pastikan anda sudah punya database postgresql, lalu lakukan query ini sebelum memulai pengetesan endpoint.
+Once again, make sure you have a PostgreSQL database, then run this query before starting to test the endpoints.  
 
-Anda tidak perlu melakukan query ini jika memutuskan menggunakan database onlines
+You don’t need to run this query if you decide to use the online database.
 
 ```sql
 create table public.products
@@ -91,3 +98,291 @@ INSERT INTO public.products (id, name, description, price, variety, rating, stoc
 
 
 ```
+
+### Example API Request and Response
+This cover all positive case, for negative case refer to postman online documentation above at section API documentation of this project
+- Healthcheck
+
+  - Request
+
+  ```
+  curl --location 'http://localhost:9999'
+  ```
+
+  - Response
+
+  ```json
+  {
+    "message": "Assessment Tsel - Server up and running",
+    "server_time": "Thu, 15 Aug 2024 01:01:37 WIB",
+    "version": "v1.0.0"
+  }
+  ```
+
+- Create Product
+
+  - Request
+
+  ```
+    curl --location 'http://localhost:9999/v1/products' \
+    --header 'Content-Type: application/json' \
+    --data '{
+        "name": "Test Product",
+        "description": "Sarung untuk mandi pagi deskripsi",
+        "price": 99009,
+        "variety": {
+            "colors": ["red", "blue", "green"],
+            "sizes": ["S", "M", "L", "XL"]
+        },
+        "stock": 150
+    }'
+  ```
+
+  - Response
+
+  ```json
+    {
+        "status": "200",
+        "message": "success",
+        "data": null
+    }
+  ```
+
+- Update Product
+
+  - Request
+
+  ```
+    curl --location --request PATCH 'http://localhost:9999/v1/products' \
+    --header 'Content-Type: application/json' \
+    --data '{
+        "id": 1,
+        "name": "UPDATE Kaos slimitfit wanita",
+        "description": "Kaos slimfit wanita",
+        "price": 100000,
+        "stock": 150,
+        "rating": 4,
+        "variety": {
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL"
+            ],
+            "colors": [
+                "black",
+                "white"
+            ]
+        },
+        "createdAt": "2024-08-14T10:48:49.945826Z",
+        "updatedAt": "2024-08-14T10:48:49.945826Z"
+    }'
+  ```
+
+  - Response
+
+  ```json
+    {
+        "status": "200",
+        "message": "success update data",
+        "data": {
+            "id": 2,
+            "name": "UPDATE Kaos slimitfit wanita",
+            "description": "Kaos slimfit wanita",
+            "price": 100000,
+            "stock": 150,
+            "rating": 4.5,
+            "variety": {
+                "sizes": [
+                    "S",
+                    "M",
+                    "L",
+                    "XL"
+                ],
+                "colors": [
+                    "black",
+                    "white"
+                ]
+            },
+            "createdAt": "2024-08-14T10:48:49.945826Z",
+            "updatedAt": "2024-08-14T22:46:54.426361Z"
+        }
+    }
+  ```
+
+- Delete Product
+
+  - Request
+
+  ```
+    curl --location --request DELETE 'http://localhost:9999/v1/products/6'
+  ```
+
+  - Response
+
+  ```json
+    {
+        "status": "200",
+        "message": "success delete data",
+        "data": null
+    }
+  ```
+
+- Get List Products
+
+  - Request
+
+  ```
+    curl --location 'http://localhost:9999/v1/products?page=1&limit=10'
+  ```
+
+  - Response
+
+  ```json
+    {
+        "status": "200",
+        "message": "success",
+        "data": {
+            "results": [
+                {
+                    "id": 3,
+                    "name": "Updated Jaket Denim",
+                    "description": "Jaket denim updated nih",
+                    "price": 125000,
+                    "stock": 150,
+                    "rating": 4.5,
+                    "variety": {
+                        "sizes": [
+                            "S",
+                            "M",
+                            "L",
+                            "XL"
+                        ],
+                        "colors": [
+                            "red",
+                            "blue",
+                            "green"
+                        ]
+                    },
+                    "createdAt": "2024-08-14T11:20:01.624094Z",
+                    "updatedAt": "2024-08-14T11:29:06.354793Z"
+                },
+                {
+                    "id": 4,
+                    "name": "Sarung jamur",
+                    "description": "Sarung jamur deskripsi",
+                    "price": 99009,
+                    "stock": 150,
+                    "rating": null,
+                    "variety": {
+                        "sizes": [
+                            "S",
+                            "M",
+                            "L",
+                            "XL"
+                        ],
+                        "colors": [
+                            "red",
+                            "blue",
+                            "green"
+                        ]
+                    },
+                    "createdAt": "2024-08-14T22:25:56.743047Z",
+                    "updatedAt": "2024-08-14T22:25:56.743047Z"
+                },
+                {
+                    "id": 5,
+                    "name": "Test kurang kurang",
+                    "description": "Sarung jamur deskripsi",
+                    "price": 99009,
+                    "stock": 150,
+                    "rating": 4.4,
+                    "variety": {
+                        "sizes": [
+                            "S",
+                            "M",
+                            "L",
+                            "XL"
+                        ],
+                        "colors": [
+                            "red",
+                            "blue",
+                            "green"
+                        ]
+                    },
+                    "createdAt": "2024-08-14T22:28:01.449332Z",
+                    "updatedAt": "2024-08-14T22:29:06.21072Z"
+                },
+                {
+                    "id": 2,
+                    "name": "UPDATE Kaos slimitfit wanita",
+                    "description": "Kaos slimfit wanita",
+                    "price": 100000,
+                    "stock": 150,
+                    "rating": 4.5,
+                    "variety": {
+                        "sizes": [
+                            "S",
+                            "M",
+                            "L",
+                            "XL"
+                        ],
+                        "colors": [
+                            "black",
+                            "white"
+                        ]
+                    },
+                    "createdAt": "2024-08-14T10:48:49.945826Z",
+                    "updatedAt": "2024-08-14T22:46:54.426361Z"
+                }
+            ],
+            "pagination": {
+                "page": 1,
+                "totalPages": 1,
+                "totalItems": 4,
+                "limit": 10,
+                "hasNext": false,
+                "hasPrevious": false
+            }
+        }
+    }
+  ```
+
+- Get Detail Product by ID
+
+  - Request
+
+  ```
+    curl --location 'http://localhost:9999/v1/products/6'
+  ```
+
+  - Response
+
+  ```json
+    {
+        "status": "200",
+        "message": "success",
+        "data": {
+            "id": 2,
+            "name": "Kaos Polos Wanita",
+            "description": "Kaos slimfit wanita",
+            "price": 100000,
+            "stock": 150,
+            "rating": null,
+            "variety": {
+                "sizes": [
+                    "S",
+                    "M",
+                    "L",
+                    "XL"
+                ],
+                "colors": [
+                    "black",
+                    "white"
+                ]
+            },
+            "createdAt": "2024-08-14T10:48:49.945826Z",
+            "updatedAt": "2024-08-14T10:48:49.945826Z"
+        }
+    }
+  ```
