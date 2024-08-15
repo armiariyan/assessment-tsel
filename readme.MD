@@ -8,6 +8,22 @@
 
 We can run this Assessment project with or without Docker. Here, I am providing both ways to run this project.
 
+
+
+#### Run with Docker
+
+- Install docker in your machine
+- Run this command
+```bash
+# pull image from the docker hub
+docker pull armiariyan/assessment-tsel
+
+# after complete pull, run this
+docker run -p 9999:9999 armiariyan/assessment-tsel
+```
+
+#### Run without Docker
+
 - Clone this project
 
 ```bash
@@ -20,20 +36,10 @@ git clone https://github.com/armiariyan/assessment-tsel.git
 # Move to the project root directory
 cd assessment-tsel
 ```
-
-#### Run with Docker
-
-- Create a file `.env` similar to `.env.example` at the root directory with your configuration.
-- Install Docker and Docker Compose.
-- Run `docker-compose up -d`.
-- Access API using `http://localhost:9999`
-
-#### Run without Docker
-
 - Create a file `.env` similar to `.env.example` at the root directory with your configuration.
 - Install `go` if not installed on your machine.
 - If you plan to use your local database, make sure you install `PostgreSQL` if not installed on your machine
-- Change your `.env` section `env` into `"local"` so when app running, its used local database
+- If you want to use local database (i recommend just use the online one, so skip this step) Change your `.env` section `env` into `"local"` so when app running, its used local database
 - Important: Change your `.env` section `postgresql.products.*` into your local database properties
 - Run `go run main.go`.
 - Access API using `http://localhost:9999`
