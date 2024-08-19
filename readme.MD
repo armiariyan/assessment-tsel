@@ -21,6 +21,7 @@ docker pull armiariyan/assessment-tsel
 # after complete pull, run this
 docker run -p 9999:9999 armiariyan/assessment-tsel
 ```
+- Access API using `http://localhost:9999`. See the API Documentation below
 
 #### Run without Docker
 
